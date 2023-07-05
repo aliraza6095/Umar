@@ -1,0 +1,58 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+ - stage: SP
+   jobs:
+     - job: starting_portal
+   displayName: starting_portal
+
+ - stage: A
+   dependsOn: SP
+   jobs:
+     - job: Stage_Component-A
+   displayName: Stage_Component-A
+
+ - stage: B
+   dependsOn: SP
+   jobs:
+     - job: Stage_Component-B
+   displayName: Stage_Component-B
+
+
+ - stage: C
+   dependsOn: SP
+   jobs:
+     - job: Stage_Component-C
+   displayName: Stage_Component-C
+
+ - stage: PA
+   dependsOn: 
+   - A
+   - B
+   - C
+   jobs:
+     - job: Product-Artifact
+   displayName: Product-Artifact
+
+ - stage: DeployApp
+   dependsOn: PA
+   condition: succeeded('PA')
+   jobs:
+     - job: TestApp
+   displayName: DeployApp
+
+ - stage: RollingBack
+   dependsOn: PA
+   condition: failed('PA')
+   jobs:
+     - job: TestApp1
+   displayName: RollingBack
