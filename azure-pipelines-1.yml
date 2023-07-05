@@ -12,27 +12,27 @@ pool:
 stages:
  - stage: SP
    jobs:
-     - job: starting_portal
-   displayName: starting_portal
+     - job: starting-portal
+   displayName: starting-portal
 
  - stage: A
    dependsOn: SP
    jobs:
-     - job: Stage_Component-A
-   displayName: Stage_Component-A
+     - job: StageComponent-A
+   displayName: Stage-Component-A
 
  - stage: B
    dependsOn: SP
    jobs:
-     - job: Stage_Component-B
-   displayName: Stage_Component-B
+     - job: Stage-Component-B
+   displayName: Stage-Component-B
 
 
  - stage: C
    dependsOn: SP
    jobs:
-     - job: Stage_Component-C
-   displayName: Stage_Component-C
+     - job: Stage-Component-C
+   displayName: Stage-Component-C
 
  - stage: PA
    dependsOn: 
