@@ -12,26 +12,26 @@ pool:
 stages:
  - stage: SP
    jobs:
-     - job: starting-portal
-   displayName: starting-portal
+     - job: startingportal
+   displayName: startingPortal
 
  - stage: A
    dependsOn: SP
    jobs:
-     - job: StageComponent-A
+     - job: StageComponentA
    displayName: Stage-Component-A
 
  - stage: B
    dependsOn: SP
    jobs:
-     - job: Stage-Component-B
+     - job: StageComponentB
    displayName: Stage-Component-B
 
 
  - stage: C
    dependsOn: SP
    jobs:
-     - job: Stage-Component-C
+     - job: StageComponentC
    displayName: Stage-Component-C
 
  - stage: PA
@@ -40,7 +40,7 @@ stages:
    - B
    - C
    jobs:
-     - job: Product-Artifact
+     - job: ProductArtifact
    displayName: Product-Artifact
 
  - stage: DeployApp
