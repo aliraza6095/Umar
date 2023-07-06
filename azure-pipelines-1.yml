@@ -1,3 +1,4 @@
+
 # Starter pipeline
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
@@ -10,49 +11,38 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
- - stage: SP
+ - stage: CakeBaking
    jobs:
-     - job: startingportal
-   displayName: startingPortal
+     - job: StartingCakeBaking
+   displayName: StartingCakeBaking
 
- - stage: A
-   dependsOn: SP
+ - stage: BakingTin
    jobs:
-     - job: StageComponentA
-   displayName: Stage-Component-A
+     - job: BakingTin
+   displayName: BakingTin
 
- - stage: B
-   dependsOn: SP
+ - stage: ReadyOven
    jobs:
-     - job: StageComponentB
-   displayName: Stage-Component-B
+     - job: ReadyOvenAt180
+   displayName: ReadyOvenAt180
 
 
- - stage: C
-   dependsOn: SP
+ - stage: Mixiture1
    jobs:
-     - job: StageComponentC
-   displayName: Stage-Component-C
+     - job: CocoaBakingPowderMaidaMixture
+   displayName: CocoaBakingPowderMaidaMixture
 
- - stage: PA
-   dependsOn: 
-   - A
-   - B
-   - C
+ - stage: Mixiture2
    jobs:
-     - job: ProductArtifact
-   displayName: Product-Artifact
+     - job: ButterMilkmaidMixture
+   displayName: ButterMilkmaidMixture
 
- - stage: DeployApp
-   dependsOn: PA
-   condition: succeeded('PA')
+ - stage: CombineMixtureAndMixture2
    jobs:
-     - job: TestApp
-   displayName: DeployApp
+     - job: CombineMixtureAndMixture2
+   displayName: CombineMixtureAndMixture2
 
- - stage: RollingBack
-   dependsOn: PA
-   condition: failed('PA')
+ - stage: FinalStage
    jobs:
-     - job: TestApp1
-   displayName: RollingBack
+     - job: PlaceInOvenForBaking
+   displayName: PlaceInOvenForBaking
