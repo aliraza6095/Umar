@@ -30,9 +30,6 @@ stages:
    dependsOn: ReadyOven
    jobs:
      - job: CocoaBakingPowderMaidaMixture
-       steps: 
-        - CocoaBakingPowder
-        - MaidaMixing
    displayName: CocoaBakingPowderMaidaMixture
 
  - stage: Mixiture2
