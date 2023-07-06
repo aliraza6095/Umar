@@ -42,7 +42,7 @@ stages:
    dependsOn:
    - Mixiture1
    - Mixiture2
-   condition: and(succeeded('Mixiture1', 'Mixiture2'))
+   condition: and(succeeded('Mixiture1'), ('Mixiture2'))
    jobs:
      - job: CombineMixtureAndMixture2
    displayName: CombineMixtureAndMixture2
