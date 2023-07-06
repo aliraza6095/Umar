@@ -19,13 +19,12 @@ stages:
  - stage: BakingTin
    jobs:
      - job: BakingTin
-   displayName: BakingTin
+   displayName: TakeBakingTin
 
  - stage: ReadyOven
    jobs:
      - job: ReadyOvenAt180
    displayName: ReadyOvenAt180
-
 
  - stage: Mixiture1
    jobs:
@@ -38,11 +37,15 @@ stages:
    displayName: ButterMilkmaidMixture
 
  - stage: CombineMixtureAndMixture2
+   dependsOn:
+   - Mixiture1
+   - Mixiture2
    jobs:
      - job: CombineMixtureAndMixture2
    displayName: CombineMixtureAndMixture2
 
  - stage: FinalStage
+   dependsOn: CombineMixtureAndMixture2
    jobs:
      - job: PlaceInOvenForBaking
    displayName: PlaceInOvenForBaking
