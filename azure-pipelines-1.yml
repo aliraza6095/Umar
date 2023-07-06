@@ -27,11 +27,13 @@ stages:
    displayName: ReadyOvenAt180
 
  - stage: Mixiture1
+   dependsOn: ReadyOven
    jobs:
      - job: CocoaBakingPowderMaidaMixture
    displayName: CocoaBakingPowderMaidaMixture
 
  - stage: Mixiture2
+   dependsOn: ReadyOven
    jobs:
      - job: ButterMilkmaidMixture
    displayName: ButterMilkmaidMixture
