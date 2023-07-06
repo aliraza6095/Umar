@@ -42,12 +42,14 @@ stages:
    dependsOn:
    - Mixiture1
    - Mixiture2
+   condition: and(succeeded('Mixiture1','Mixiture2'))
    jobs:
      - job: CombineMixtureAndMixture2
    displayName: CombineMixtureAndMixture2
 
  - stage: FinalStage
    dependsOn: CombineMixtureAndMixture2
+   condition: failed('CombineMixtureAndMixture2')
    jobs:
      - job: PlaceInOvenForBaking
    displayName: PlaceInOvenForBaking
