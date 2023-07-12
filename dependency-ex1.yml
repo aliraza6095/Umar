@@ -4,7 +4,7 @@ trigger:
       - main
   paths:
     include: 
-      - /dependency-ex1.yml
+      - /Onlinecelling/dependency-ex1.yml
 pool:
   vmImage: ubuntu-latest
 
